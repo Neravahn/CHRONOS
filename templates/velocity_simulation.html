@@ -17,13 +17,30 @@
 
         <!--PANEL SECTION-->
         <div class="panel">
-            <h3>VELOCITY TIME DILATION</h3>
+            <h1>VELOCITY TIME DILATION</h1>
             <label for="velocity">VELOCITY IN PERCENT OF C (SPEED OF LIGHT)
-            <input type="range" class="velocity" min="1" max="99" step="0.001" value="0">
             </label>
+
+            <input type="number" id="steps" placeholder="ENTER STEPS">
+
+            <div id="vel_range"></div>
+
+
+
+            <input type="range" class="velocity" min="0" max="99" step="0.001" value="0">
+            <div id="button_group">
+                <button id="up" class="up_down">INCREASE</button>
+                <button id="down" class="up_down">DECREASE</button>
+            </div>
             <button id="reset">RESET CANVAS</button>
         </div>
     </div>
+
+
+
+    <!--SCCRIPTS-->
+    <script src="{{ url_for('static', filename='js/range.js') }}"></script>
+
 </body>
 
 </html>
