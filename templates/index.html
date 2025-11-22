@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONOS</title>
+
+    <style>
+        @font-face {
+            font-family: 'Asimovian';
+            src: url("{{ url_for('static', filename='fonts/Asimovian-Regular.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Nunito';
+            src: url("{{ url_for('static', filename='fonts/Nunito-VariableFont_wght.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        body {
+            background-color: #0d0d0d;
+            display: flex;
+            height: auto;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Nunito';
+
+        }
+
+        .logo_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Asimovian';
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+
+        .o-wrapper {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 6px;
+        }
+
+        .o-spin {
+            width: 30px;
+            height: 30px;
+            border: 10px solid rgba(255, 255, 255, 0.2);
+            border-top-color: rgb(174, 0, 255);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .card_container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 250px;
+            height: 150px;
+            background: #161616;
+            border: 2px solid #333;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .card h3 {
+            color: white;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 18px;
+        }
+
+        .button_container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button_container button {
+            background: #ffffff;
+            color: #0d0d0d;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-size: 16px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .button_container button:hover {
+            background: #e6e6ee;
+            transform: scale(1.05);
+        }
+
+        .button_container a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--LOGO CONTAINER-->
+    <div class=" logo_container">
+        <div class="logo">
+            CHR
+            <div class="o-wrapper">
+                <div class="o-spin"></div>
+            </div>
+            NOS
+        </div>
+    </div>
+
+    <!--BUTTON CONTAINER-->
+    <div class="button_container">
+        <a href="https://github.com/Neravahn/CHRONOS">
+            <button><img src="{{ url_for('static', filename='images/github.png') }}" style="width:30px;">
+                GITHUB</button>
+        </a>
+    </div>
+
+    <!--CARD CONTAINER-->
+    <div class="card_container">
+
+        <div class="card">
+            <h3>VELOCITY TIME DILATION</h3>
+        </div>
+
+        <div class="card">
+            <h3>GRAVITY TIME DILATION</h3>
+        </div>
+
+        <div class="card">
+            <h3>TWIN PARADOX</h3>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
