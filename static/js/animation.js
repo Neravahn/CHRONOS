@@ -1,5 +1,6 @@
 import { getGamma } from './physics.js';
 import { drawDigitalClock } from './clock.js';
+import { drawSpaceship } from './spaceship.js';
 
 export function startAnimation(canvasID, getVelocity) {
     const canvas = document.getElementById(canvasID);
@@ -24,16 +25,22 @@ export function startAnimation(canvasID, getVelocity) {
         const clockHeight = 60;
         const totalWidth = 2 * clockWidth + paddingBetweenClocks;
         const startX = (canvas.width - totalWidth) / 2;
-        const centerY = canvas.height  / 10;
+        const position = canvas.height  / 10;
 
         const firstClockX = startX + clockWidth /2;
         const secondClcokx = firstClockX + clockWidth + paddingBetweenClocks;
 
 
 
-        drawDigitalClock(ctx, firstClockX, centerY, clockWidth, clockHeight, realElapsed, 'Real Time');
-        drawDigitalClock(ctx, secondClcokx, centerY, clockWidth, clockHeight, dilatedElapsed, 'Dilated Time');
+        drawDigitalClock(ctx, firstClockX, position, clockWidth, clockHeight, realElapsed, 'Real Time');
+        drawDigitalClock(ctx, secondClcokx, position, clockWidth, clockHeight, dilatedElapsed, 'Dilated Time');
 
+        //SPACESHIP
+        const spaceshipY = position + clockHeight + 100;
+        const spaceshipWidth = 20;
+        const spaceshipHeight = 10;
+
+        drawSpaceship(ctx, canvas.width / 2, spaceshipY, spaceshipWidth, spaceshipHeight, gamma);
         requestAnimationFrame(animate);
     }
 
