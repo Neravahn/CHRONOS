@@ -16,9 +16,9 @@ const max_zoom = 1.2;
 //BOUNDARIES
 const world = {
     left: -2000,
-    right: 2000,
+    right: 1000,
     top: -2000,
-    bottom: 2000
+    bottom: 1000
 };
 
 function clampCamera(canvas) {

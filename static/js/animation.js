@@ -13,7 +13,7 @@ export function startAnimation(canvasID, getVelocity) {
 
     let startTime = Date.now();
 
-    initStars(300, canvas.width, canvas.height);
+    initStars(500, canvas.width, canvas.height);
     setupCameraControls(canvas);
 
     function animate() {
