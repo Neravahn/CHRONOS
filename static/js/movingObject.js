@@ -6,7 +6,11 @@ export function drawSpaceship (ctx, x, y, width, height, gamma) {
         return;
     }
 
-    const contractedWidth = width / gamma;
+    const contraction = 1 / Math.sqrt(gamma);
+    const shipWidth = width * contraction;
+
+
+    //TERREL ROTARION
 
 
     ctx.save();
@@ -15,11 +19,12 @@ export function drawSpaceship (ctx, x, y, width, height, gamma) {
 
     ctx.drawImage(
         rocketImg,
-        -contractedWidth / 2,
-        -height /2,
-        contractedWidth,
-        height,
+        -shipWidth / 2,
+        -height / 2,
+        shipWidth,
+        height
     );
+    
 
     ctx.restore();
 }
