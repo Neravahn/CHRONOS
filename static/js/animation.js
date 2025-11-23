@@ -17,12 +17,22 @@ export function startAnimation(canvasID, getVelocity) {
 
         let now = Date.now();
         let realElapsed = now - startTime;
-
         let dilatedElapsed = realElapsed / gamma;
 
+        const paddingBetweenClocks = 200;
+        const clockWidth = 200;
+        const clockHeight = 60;
+        const totalWidth = 2 * clockWidth + paddingBetweenClocks;
+        const startX = (canvas.width - totalWidth) / 2;
+        const centerY = canvas.height  / 10;
 
-        drawDigitalClock(ctx, 150, 100, 200, 60, realElapsed, 'Real Time');
-        drawDigitalClock(ctx, 450, 100, 200, 60, dilatedElapsed, 'Dilated Time');
+        const firstClockX = startX + clockWidth /2;
+        const secondClcokx = firstClockX + clockWidth + paddingBetweenClocks;
+
+
+
+        drawDigitalClock(ctx, firstClockX, centerY, clockWidth, clockHeight, realElapsed, 'Real Time');
+        drawDigitalClock(ctx, secondClcokx, centerY, clockWidth, clockHeight, dilatedElapsed, 'Dilated Time');
 
         requestAnimationFrame(animate);
     }
