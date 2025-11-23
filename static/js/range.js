@@ -33,3 +33,9 @@ velSlider.addEventListener('input', () => {
     velText.textContent = velSlider.value + '% of C';
 });
 });
+
+
+export function getCurrentVelocity() {
+    const velSlider = document.querySelector('.velocity');
+    return parseFloat(velSlider.value) || 0;
+}
