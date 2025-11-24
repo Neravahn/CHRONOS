@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELOCITY TIME SIMULATION</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vtd.css') }}">
+</head>
+
+<body>
+    <div class="main">
+        <!--CANVAS SECTION-->
+        <div class="canvas_container">
+            <canvas id="gtd_canvas"></canvas>
+        </div>
+
+        <!--PANEL SECTION-->
+        <div class="panel">
+            <h1>GRAVITY TIME DILATION</h1>
+            <button id="toggle_grid">TOGGLE GRID</button>
+        </div>
+    </div>
+
+
+
+    <!--SCCRIPTS-->
+    <script type="module" src="{{ url_for('static', filename='js/gtd/main.js') }}"></script>
+</body>
+
+</html>

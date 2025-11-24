@@ -23,7 +23,7 @@ export function initStars(count, canvaswidth, canvasheight) {
 
 export function drawStars(ctx, canvaswidth, canvasheight, velocity) {
     ctx.fillStyle = 'rgba(228, 235, 244, 0.8)';
-    const baseSpeed = Math.log10(1 + velocity * 9) * 20;
+    const baseSpeed = velocity * 5;
 
     for (let i = 0; i < stars.length; i++) {
         let s = stars[i];

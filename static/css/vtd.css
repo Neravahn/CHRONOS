@@ -19,7 +19,8 @@ body {
     justify-content: center;
 }
 
-#vtd_canvas {
+#vtd_canvas,
+#gtd_canvas {
     width: 1425px;
     height: 950px;
     background: #111;
@@ -57,7 +58,8 @@ body {
 
 #reset,
 .up_down,
-#steps {
+#steps,
+#toggle_grid {
     background: #ffffff;
     color: #0d0d0d;
     border: none;

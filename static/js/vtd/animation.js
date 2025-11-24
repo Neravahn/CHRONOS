@@ -10,6 +10,7 @@ export function startAnimation(canvasID, getVelocity) {
     const ctx = canvas.getContext('2d');
     canvas.width = 1425;
     canvas.height = 950;
+    let time = 0;
 
     let startTime = Date.now();
 
@@ -52,7 +53,8 @@ export function startAnimation(canvasID, getVelocity) {
         const spaceshipHeight = 200;
 
         drawGrid(ctx, canvas, velocity, shipPivotX, shipPivotY, 'right');
-        drawSpaceship(ctx, shipPivotX, shipPivotY, shipWidth, shipHeight, gamma);
+        time++ ;
+        drawSpaceship(ctx, shipPivotX, shipPivotY, shipWidth, shipHeight, gamma, time);
 
         ctx.restore();
 

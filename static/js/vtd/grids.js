@@ -46,4 +46,23 @@ export function drawGrid(ctx, canvas, velocity, shipx, shipy, direction = 'right
 
         ctx.stroke();
     }
+
+    //HORIZONTAL GRID
+
+    const horizontalCount = 4;
+    const spacing = canvas.height / (horizontalCount + 1);
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 0.2;
+
+    for (let i = 0; i <= horizontalCount; i++) {
+        const y = i * spacing;
+
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+
+    }
+
 }
