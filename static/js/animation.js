@@ -3,7 +3,7 @@ import { drawDigitalClock } from './clock.js';
 import { drawSpaceship } from './movingObject.js';
 import { initStars, drawStars } from './starfield.js'
 import { camera, setupCameraControls, applyCameraTransform } from './camera.js'
-
+import { drawBendingGrids } from './grids.js';
 
 export function startAnimation(canvasID, getVelocity) {
     const canvas = document.getElementById(canvasID);
@@ -40,11 +40,17 @@ export function startAnimation(canvasID, getVelocity) {
         const position = canvas.height / 10;
 
 
+        const shipx = canvas.width / 2;
+        const shipy = canvas.height / 2 + 200;
+
         //SPACESHIP
-        const spaceshipY = position + clockHeight + 400;
         const spaceshipWidth = 1000;
         const spaceshipHeight = 200;
-        drawSpaceship(ctx, canvas.width / 2, spaceshipY, spaceshipWidth, spaceshipHeight, gamma);
+
+        const spaceshipX = canvas.width / 2;
+        const spaceshipY = position + clockHeight + 400 + spaceshipHeight / 2;
+        drawBendingGrids(ctx, canvas, velocity, spaceshipX, spaceshipY, 'left');
+        drawSpaceship(ctx, canvas.width / 2, position + clockHeight + 400, spaceshipWidth, spaceshipHeight, gamma);
         ctx.restore();
 
 
@@ -56,7 +62,7 @@ export function startAnimation(canvasID, getVelocity) {
         drawDigitalClock(ctx, secondClcokx, position, clockWidth, clockHeight, dilatedElapsed, 'Dilated Time');
 
         requestAnimationFrame(animate);
-        
+
     }
 
     animate();
