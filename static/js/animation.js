@@ -51,7 +51,7 @@ export function startAnimation(canvasID, getVelocity) {
         const spaceshipWidth = 1000;
         const spaceshipHeight = 200;
 
-        drawGrid(ctx, canvas, velocity, canvas.width / 2, position + clockHeight + 400, 'right');
+        drawGrid(ctx, canvas, velocity, shipPivotX, shipPivotY, 'right');
         drawSpaceship(ctx, shipPivotX, shipPivotY, shipWidth, shipHeight, gamma);
 
         ctx.restore();
