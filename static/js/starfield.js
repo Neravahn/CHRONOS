@@ -14,7 +14,7 @@ export function initStars(count, canvaswidth, canvasheight) {
         stars.push({
             x: Math.random() * (world.right - world.left) + world.left,
             y: Math.random() * (world.bottom - world.top) + world.top,
-            size: 1,
+            size: 1.5,
             speed:Math.random() * 0.5 + 0.2,
             depth: Math.random() * 0.9 + 1
         });
@@ -22,7 +22,7 @@ export function initStars(count, canvaswidth, canvasheight) {
 }
 
 export function drawStars(ctx, canvaswidth, canvasheight, velocity) {
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'rgba(228, 235, 244, 0.8)';
     const baseSpeed = Math.log10(1 + velocity * 9) * 20;
 
     for (let i = 0; i < stars.length; i++) {

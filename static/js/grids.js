@@ -1,29 +1,21 @@
 export function drawGrid(ctx, canvas, velocity, shipx, shipy, direction = 'right') {
-    const cols = 30;
+    const centerX = canvas.width / 2;
+    const startY = 0;
+    const endY = canvas.height;
 
-    const speed = velocity / 100;
-    const maxCurve = 400 * speed; 
-    const maxCompression = 400 * speed;
 
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = 0.5;
 
-    for (let i = 0; i <= cols; i++) {
-        const xRest = (canvas.width / cols) * i;
+    ctx.strokeStyle = 'blue';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
 
-        let relX = xRest - shipx;
-        let distortion = maxCompression * Math.exp(-Math.abs(relX) / canvas.width);
-        if (direction === 'left') relX -= distortion;
-        else relX += distortion;
 
-        const drawX = shipx + relX;
+    ctx.moveTo(centerX, startY);
 
-        const curveOffset = maxCurve * Math.exp(-Math.abs(relX) / canvas.width);
-        const controlX = drawX + (direction === 'left' ? -curveOffset : curveOffset);
+    ctx.lineTo(centerX, endY);
 
-        ctx.beginPath();
-        ctx.moveTo(drawX, 0);
-        ctx.quadraticCurveTo(controlX, shipy, drawX, canvas.height);
-        ctx.stroke();
-    }
+
+    ctx.stroke();
+
+
 }

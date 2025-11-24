@@ -2,7 +2,7 @@ import { getGamma } from './physics.js';
 import { drawDigitalClock } from './clock.js';
 import { drawSpaceship } from './movingObject.js';
 import { initStars, drawStars } from './starfield.js'
-import { camera, setupCameraControls, applyCameraTransform } from './camera.js'
+// import { camera, setupCameraControls, applyCameraTransform } from './camera.js'
 import { drawGrid } from './grids.js';
 
 export function startAnimation(canvasID, getVelocity) {
@@ -13,8 +13,12 @@ export function startAnimation(canvasID, getVelocity) {
 
     let startTime = Date.now();
 
-    initStars(500, canvas.width, canvas.height);
-    setupCameraControls(canvas);
+    initStars(1000, canvas.width, canvas.height);
+    // setupCameraControls(canvas);
+    const shipWidth = 100;
+    const shipHeight = 40;
+    const shipPivotX = canvas.width / 2;
+    const shipPivotY = canvas.height / 2 ;
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -26,7 +30,7 @@ export function startAnimation(canvasID, getVelocity) {
         let dilatedElapsed = realElapsed / gamma;
 
         ctx.save();
-        applyCameraTransform(ctx);
+        // applyCameraTransform(ctx);
 
         //STARS
         drawStars(ctx, canvas.width, canvas.height, velocity);
@@ -48,7 +52,8 @@ export function startAnimation(canvasID, getVelocity) {
         const spaceshipHeight = 200;
 
         drawGrid(ctx, canvas, velocity, canvas.width / 2, position + clockHeight + 400, 'right');
-        drawSpaceship(ctx, canvas.width / 2, position + clockHeight + 400, spaceshipWidth, spaceshipHeight, gamma);
+        drawSpaceship(ctx, shipPivotX, shipPivotY, shipWidth, shipHeight, gamma);
+
         ctx.restore();
 
 
