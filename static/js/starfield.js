@@ -14,7 +14,7 @@ export function initStars(count, canvaswidth, canvasheight) {
         stars.push({
             x: Math.random() * (world.right - world.left) + world.left,
             y: Math.random() * (world.bottom - world.top) + world.top,
-            size: 0.5,
+            size: 1,
             speed:Math.random() * 0.5 + 0.2,
             depth: Math.random() * 0.9 + 1
         });
