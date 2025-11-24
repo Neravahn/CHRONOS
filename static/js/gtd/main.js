@@ -1,8 +1,15 @@
 import { drawGrid } from "./grid.js";
+import { drawMass } from "./render.js";
 
 
 //VARIABLES
 let showGrid = true;
+let massValue= 10;
+const massSlider = document.getElementById('mass')
+const massRangeText = document.getElementById('mass_range');
+
+
+
 
 
 //CANVAS SETUP
@@ -15,17 +22,34 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
+
+
+
 //BUTTON EVENTS
 document.getElementById('toggle_grid').addEventListener('click', () => {
     showGrid = !showGrid
 })
+massSlider.addEventListener('input', () => {
+    massValue = Number(massSlider.value) || 10;
+    massRangeText.textContent = massValue + ' UNITS'
+})
+
+
+
+
 
 //ANIMATION LOOP
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    //GRID
     if (showGrid) {
         drawGrid(ctx, canvas, 40);
     }
+
+    //OBJECT
+    let radius = massValue + 10;
+    drawMass(ctx, canvas.width / 2, canvas.height / 2, radius);
     requestAnimationFrame(animate);
 }
 

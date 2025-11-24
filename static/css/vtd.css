@@ -74,7 +74,8 @@ body {
     justify-content: center;
 }
 
-#vel_range {
+#vel_range,
+#mass {
     font-size: 1.5rem;
 }
 
