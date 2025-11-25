@@ -51,13 +51,13 @@ function animate() {
 
     //GRID
     if (showGrid) {
-        drawGrid(ctx, canvas, 40);
+        drawGrid(ctx, canvas, 40, masses);
     }
 
     //OBJECT
 
     for (const m of masses) {
-        drawMass(ctx, m.x, m.y, m.radius);
+        drawMass(ctx, m.x, m.y, m.radius + 10);
     }
 
 

@@ -17,7 +17,7 @@ export function drawMass(ctx, x, y, radius){
     ctx.fill();
 
     const ringWidth = radius * 0.1;
-    const glowRadius = radius + ringWidth;
+    const glowRadius = radius + ringWidth ;
 
 
     const gradient = ctx.createRadialGradient(
