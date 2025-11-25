@@ -21,7 +21,7 @@ export function drawLight(ctx, canvas) {
     }
 
 
-    ctx.strokeStyle = 'rgba(255,240,200,0.25)';
+    ctx.strokeStyle = 'rgba(255, 187, 0, 0.25)';
     ctx.lineWidth = 1;
     for (let i = 0; i < rays; i++) {
         const y = (i / rays) * canvas.height;

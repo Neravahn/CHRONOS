@@ -6,9 +6,9 @@ import { drawLight } from "./light.js";
 
 //VARIABLES
 let showGrid = true;
+let light = true;
 const massSlider = document.getElementById('mass')
 const massRangeText = document.getElementById('mass_range');
-
 
 
 
@@ -51,6 +51,9 @@ document.getElementById('toggle_gw').addEventListener('click', () => {
         };
     }
 });
+document.getElementById('toggle_lr').addEventListener('click', () => {
+    light = !light;
+})
 
 
 
@@ -65,10 +68,10 @@ function animate() {
 
     //LIGHT
 
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);  
-    drawLight(ctx, canvas);
-    ctx.restore();
+    if (!light) {
+        drawLight(ctx, canvas);
+    }
+
     //OBJECT
 
     for (const m of masses) {

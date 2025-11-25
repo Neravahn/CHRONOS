@@ -61,7 +61,8 @@ body {
 #steps,
 #toggle_grid,
 #add_mass,
-#toggle_gw {
+#toggle_gw,
+#toggle_lr {
     background: #ffffff;
     color: #0d0d0d;
     border: none;
