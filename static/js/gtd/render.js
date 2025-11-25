@@ -1,3 +1,14 @@
+export const masses = [];
+export let selectedMass = null
+
+export function addMass(x, y, radius) {
+    masses.push({x, y, radius});
+}
+
+export function selectMass(m) {
+    selectedMass = m;
+}
+
 export function drawMass(ctx, x, y, radius){
     ctx.save();
     ctx.beginPath();

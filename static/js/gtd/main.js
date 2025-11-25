@@ -1,11 +1,10 @@
 import { drawGrid } from "./grid.js";
-import { drawMass } from "./render.js";
-import { initMouse, massPosition } from "./mouse.js";
+import { initMouse } from "./mouse.js";
+import { masses, addMass, selectedMass, drawMass } from './render.js'
 
 
 //VARIABLES
 let showGrid = true;
-let massValue = 10;
 const massSlider = document.getElementById('mass')
 const massRangeText = document.getElementById('mass_range');
 
@@ -22,18 +21,25 @@ function resizeCanvas() {
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
-initMouse(canvas, canvas.width / 2, canvas.height / 2, () => massValue + 10);
-
+initMouse(canvas);
+addMass(canvas.width / 2, canvas.height / 2, 20);
 
 
 //BUTTON EVENTS
 document.getElementById('toggle_grid').addEventListener('click', () => {
     showGrid = !showGrid
-})
+});
+document.getElementById('add_mass').addEventListener('click', () => {
+    addMass(canvas.width / 2 + Math.random() * 100 - 50,
+        canvas.height / 2 + Math.random() * 100 - 50,
+        20);
+});
 massSlider.addEventListener('input', () => {
-    massValue = Number(massSlider.value) || 10;
-    massRangeText.textContent = massValue + ' UNITS'
-})
+    if (selectedMass) {
+        selectedMass.radius = Number(massSlider.value);
+        massRangeText.textContent = selectedMass.radius + ' UNITS'
+    }
+});
 
 
 
@@ -49,8 +55,11 @@ function animate() {
     }
 
     //OBJECT
-    let radius = massValue + 10;
-    drawMass(ctx, massPosition.x, massPosition.y, radius);
+
+    for (const m of masses) {
+        drawMass(ctx, m.x, m.y, m.radius);
+    }
+
 
     requestAnimationFrame(animate);
 }

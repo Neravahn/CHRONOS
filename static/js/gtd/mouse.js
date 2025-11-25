@@ -1,38 +1,40 @@
-export const massPosition = {
-    x: 0,
-    y: 0
-};
+import { masses, selectMass } from "./render.js";
 
 let isDragging = false;
-let canvasRef = null;
+let selectedMass = null;
 
-export function initMouse(canvas, startX, startY, getRadius){
-    canvasRef = canvas;
 
-    massPosition.x = startX;
-    massPosition.y = startY;
+export function initMouse(canvas){
 
     canvas.addEventListener('mousedown', (e) => {
         const rect = canvas.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
-        const dx = mouseX - massPosition.x;
-        const dy = mouseY - massPosition.y;
+        selectedMass = null;
+        for (const m of masses){
+            const dx = mouseX - m.x;
+            const dy = mouseY - m.y;
 
-        if(Math.sqrt(dx * dx + dy * dy) <= getRadius()){
-            isDragging = true;
+
+            //MASS SELECTION
+            if ( dx*dx + dy*dy <= m.radius*m.radius){
+                selectedMass = m;
+                selectMass(m);
+                isDragging = true;
+                break
+            }
         }
     });
 
     canvas.addEventListener('mousemove', (e) => {
-        if (!isDragging){
+        if (!isDragging || !selectedMass){
             return;
         }
 
         const rect = canvas.getBoundingClientRect();
-        massPosition.x = e.clientX - rect.left;
-        massPosition.y = e.clientY - rect.top;
+        selectedMass.x = e.clientX - rect.left;
+        selectedMass.y = e.clientY - rect.top;
     });
 
     canvas.addEventListener('mouseup', () => {
