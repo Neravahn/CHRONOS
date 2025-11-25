@@ -1,10 +1,11 @@
 import { drawGrid } from "./grid.js";
 import { drawMass } from "./render.js";
+import { initMouse, massPosition } from "./mouse.js";
 
 
 //VARIABLES
 let showGrid = true;
-let massValue= 10;
+let massValue = 10;
 const massSlider = document.getElementById('mass')
 const massRangeText = document.getElementById('mass_range');
 
@@ -21,7 +22,7 @@ function resizeCanvas() {
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
-
+initMouse(canvas, canvas.width / 2, canvas.height / 2, () => massValue + 10);
 
 
 
@@ -49,7 +50,8 @@ function animate() {
 
     //OBJECT
     let radius = massValue + 10;
-    drawMass(ctx, canvas.width / 2, canvas.height / 2, radius);
+    drawMass(ctx, massPosition.x, massPosition.y, radius);
+
     requestAnimationFrame(animate);
 }
 

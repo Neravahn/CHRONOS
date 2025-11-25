@@ -5,7 +5,7 @@ export function drawMass(ctx, x, y, radius){
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
 
-    const ringWidth = radius * 0.45;
+    const ringWidth = radius * 0.1;
     const glowRadius = radius + ringWidth;
 
 
