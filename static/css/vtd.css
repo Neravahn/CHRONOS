@@ -59,7 +59,9 @@ body {
 #reset,
 .up_down,
 #steps,
-#toggle_grid {
+#toggle_grid,
+#add_mass,
+#toggle_gw {
     background: #ffffff;
     color: #0d0d0d;
     border: none;

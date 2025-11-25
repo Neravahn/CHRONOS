@@ -40,6 +40,16 @@ massSlider.addEventListener('input', () => {
         massRangeText.textContent = selectedMass.radius + ' UNITS'
     }
 });
+document.getElementById('toggle_gw').addEventListener('click', () => {
+    for (let i = 0; i < masses.length; i++){
+        const m = masses[i];
+        m.wave ={
+            age: 0,
+            strength: m.radius * 2,
+            speed: 5
+        };
+    }
+});
 
 
 

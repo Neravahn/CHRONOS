@@ -2,11 +2,21 @@ export const masses = [];
 export let selectedMass = null
 
 export function addMass(x, y, radius) {
-    masses.push({x, y, radius});
+    masses.push({x, y, radius, wave: null});
 }
 
 export function selectMass(m) {
     selectedMass = m;
+}
+
+
+export function triggerWave(mass, strength = 50, speed = 5, decay = 0.95){
+    mass.wave = {
+        age: 0,
+        strength,
+        speed,
+        decay
+    };
 }
 
 export function drawMass(ctx, x, y, radius){
