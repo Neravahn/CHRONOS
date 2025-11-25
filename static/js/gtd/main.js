@@ -1,6 +1,7 @@
 import { drawGrid } from "./grid.js";
 import { initMouse } from "./mouse.js";
-import { masses, addMass, selectedMass, drawMass } from './render.js'
+import { masses, addMass, selectedMass, drawMass } from './render.js';
+import { drawLight } from "./light.js";
 
 
 //VARIABLES
@@ -41,17 +42,15 @@ massSlider.addEventListener('input', () => {
     }
 });
 document.getElementById('toggle_gw').addEventListener('click', () => {
-    for (let i = 0; i < masses.length; i++){
+    for (let i = 0; i < masses.length; i++) {
         const m = masses[i];
-        m.wave ={
+        m.wave = {
             age: 0,
-            strength: m.radius * 2,
+            strength: m.radius * 1,
             speed: 5
         };
     }
 });
-
-
 
 
 
@@ -64,6 +63,12 @@ function animate() {
         drawGrid(ctx, canvas, 40, masses);
     }
 
+    //LIGHT
+
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);  
+    drawLight(ctx, canvas);
+    ctx.restore();
     //OBJECT
 
     for (const m of masses) {
