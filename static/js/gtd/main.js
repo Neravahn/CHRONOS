@@ -2,6 +2,8 @@ import { drawGrid } from "./grid.js";
 import { initMouse } from "./mouse.js";
 import { masses, addMass, selectedMass, drawMass } from './render.js';
 import { drawLight } from "./light.js";
+import { drawDilationProbe, initDilatedProbe, updateClock} from "./clock.js";
+
 
 
 //VARIABLES
@@ -9,6 +11,7 @@ let showGrid = true;
 let light = true;
 const massSlider = document.getElementById('mass')
 const massRangeText = document.getElementById('mass_range');
+
 
 
 
@@ -24,6 +27,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 initMouse(canvas);
 addMass(canvas.width / 2, canvas.height / 2, 20);
+initDilatedProbe(canvas);
 
 
 //BUTTON EVENTS
@@ -61,10 +65,14 @@ document.getElementById('toggle_lr').addEventListener('click', () => {
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
+    updateClock();
+
     //GRID
     if (showGrid) {
         drawGrid(ctx, canvas, 40, masses);
     }
+
 
     //LIGHT
 
@@ -77,7 +85,8 @@ function animate() {
     for (const m of masses) {
         drawMass(ctx, m.x, m.y, m.radius + 10);
     }
-
+    
+    drawDilationProbe(ctx);
 
     requestAnimationFrame(animate);
 }
