@@ -4,6 +4,8 @@ Chronos is a time dilation simulation project that demonstrates how time behaves
 
 The project focuses on visualizing and calculating time dilation using fundamental physics formulas in a simple and intuitive way.
 
+[DEMO](https://drive.google.com/file/d/1Isui0zkRRt-qE3akFxGeIncfrS0pPdmn/view?usp=sharing)
+
 ## Features
 - Simulates relativistic time dilation
 - Compares proper time vs observed time
